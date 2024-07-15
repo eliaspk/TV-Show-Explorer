@@ -4,15 +4,15 @@ import { Show } from "../types";
 
 type ToggleFavoriteParams = {
   show: Show;
-  accessToken?: string;
+  idToken?: string;
 };
 
 export const useFavorite = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ show, accessToken }: ToggleFavoriteParams) =>
-      toggleFavorite(show, accessToken),
+    mutationFn: ({ show, idToken }: ToggleFavoriteParams) =>
+      toggleFavorite(show, idToken),
     onMutate: async ({ show }) => {
       // Cancel any outgoing refetches
       await queryClient.cancelQueries({ queryKey: ["favorites"] });

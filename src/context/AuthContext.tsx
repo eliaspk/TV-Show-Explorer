@@ -21,7 +21,7 @@ Amplify.configure({
 export interface CognitoUser {
   id: string;
   email: string;
-  accessToken: string;
+  idToken: string;
 }
 
 interface AuthContextType {
@@ -54,11 +54,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       const session = await fetchAuthSession();
 
       const { sub, email } = currentUser;
-      if (sub && email && session.tokens?.accessToken) {
+      if (sub && email && session.tokens?.idToken) {
         setUser({
           id: sub,
           email,
-          accessToken: session.tokens.accessToken.toString(),
+          idToken: session.tokens.idToken!.toString(),
         });
       }
     } catch (err) {

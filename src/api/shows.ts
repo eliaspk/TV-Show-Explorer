@@ -5,15 +5,15 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 export const searchShows = async (
   searchTerm: string,
-  accessToken?: string
+  idToken?: string
 ): Promise<Show[]> => {
-  const url = accessToken
+  const url = idToken
     ? `${API_URL}/auth/shows?searchQuery=${encodeURIComponent(searchTerm)}`
     : `${API_URL}/shows?searchQuery=${encodeURIComponent(searchTerm)}`;
 
   const response = await axios.get<{ results: Show[] }>(url, {
     headers: {
-      Authorization: accessToken ?? "",
+      Authorization: `Bearer ${idToken}`,
     },
   });
   return response.data.results;
@@ -39,16 +39,14 @@ export const fetchSeasonEpisodes = async (
   return response.data;
 };
 
-export const fetchTrendingShows = async (
-  accessToken?: string
-): Promise<Show[]> => {
-  const url = accessToken
+export const fetchTrendingShows = async (idToken?: string): Promise<Show[]> => {
+  const url = idToken
     ? `${API_URL}/auth/shows/discover`
     : `${API_URL}/shows/discover`;
 
   const response = await axios.get(url, {
     headers: {
-      Authorization: accessToken ?? "",
+      Authorization: idToken ? `Bearer ${idToken}` : "",
     },
   });
   return response.data.results;

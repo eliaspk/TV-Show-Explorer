@@ -8,26 +8,26 @@ export const fetchFavorites = async ({
 }: {
   queryKey: Array<string | undefined>;
 }) => {
-  const [, accessToken] = queryKey;
-  if (!accessToken) throw new Error("Unauthorized");
+  const [, idToken] = queryKey;
+  if (!idToken) throw new Error("Unauthorized");
 
   const response = await axios.get(`${API_URL}/favorites`, {
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${idToken}`,
     },
   });
   return response.data;
 };
 
-export const toggleFavorite = async (show: Show, accessToken?: string) => {
-  if (!accessToken) throw new Error("Unauthorized");
+export const toggleFavorite = async (show: Show, idToken?: string) => {
+  if (!idToken) throw new Error("Unauthorized");
 
   const endpoint = `${API_URL}/favorites`;
 
   if (show.isFavorite) {
     await axios.delete(`${endpoint}/${show.id}`, {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${idToken}`,
       },
     });
   } else {
@@ -36,7 +36,7 @@ export const toggleFavorite = async (show: Show, accessToken?: string) => {
       { showId: show.id },
       {
         headers: {
-          Authorization: `Bearer ${accessToken}`,
+          Authorization: `Bearer ${idToken}`,
         },
       }
     );

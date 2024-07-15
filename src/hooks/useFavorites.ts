@@ -5,8 +5,8 @@ import { useAuth } from "./useAuth";
 export const useFavorites = () => {
   const { user } = useAuth();
   return useQuery({
-    queryKey: ["favorites", user?.accessToken],
-    queryFn: user?.accessToken ? fetchFavorites : () => [],
+    queryKey: ["favorites", user?.idToken],
+    queryFn: user?.idToken ? fetchFavorites : () => [],
     staleTime: Infinity, // 5 minutes
   });
 };

@@ -26,7 +26,7 @@ const Home: React.FC = () => {
     error: searchError,
   } = useQuery({
     queryKey: ["searchShows", debouncedSearchTerm],
-    queryFn: () => searchShows(debouncedSearchTerm, user?.accessToken),
+    queryFn: () => searchShows(debouncedSearchTerm, user?.idToken),
     enabled: debouncedSearchTerm.length > 0,
     staleTime: 1000 * 60 * 15,
   });
@@ -37,7 +37,7 @@ const Home: React.FC = () => {
     error: trendingError,
   } = useQuery({
     queryKey: ["trendingShows"],
-    queryFn: () => fetchTrendingShows(user?.accessToken),
+    queryFn: () => fetchTrendingShows(user?.idToken),
     enabled: debouncedSearchTerm.length === 0,
     staleTime: 1000 * 60 * 15,
   });
@@ -57,11 +57,11 @@ const Home: React.FC = () => {
   };
 
   const onToggleFavorite = async (show: Show) => {
-    if (!user?.accessToken) {
+    if (!user?.idToken) {
       navigate("/favorites");
       return;
     }
-    favoriteMutation.mutate({ show, accessToken: user?.accessToken });
+    favoriteMutation.mutate({ show, idToken: user?.idToken });
   };
 
   const isLoading = isSearchLoading || isTrendingLoading;
