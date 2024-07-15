@@ -4,6 +4,8 @@
 
 This is the frontend for the TV Show Explorer application, a web-based platform that allows users to discover, search, and manage their favorite TV shows. Built with React and TypeScript, it provides a responsive and intuitive interface for browsing show details and adding favorites. No pagination as of yet.
 
+Backend code can be found here: https://github.com/eliaspk/TV-Show-Explorer-Backend
+
 ## Features
 
 - Search for TV shows by title
@@ -54,9 +56,6 @@ This is the frontend for the TV Show Explorer application, a web-based platform 
    REACT_APP_API_URL=your_backend_api_url
    REACT_APP_COGNITO_USER_POOL_ID=your_cognito_user_pool_id
    REACT_APP_COGNITO_CLIENT_ID=your_cognito_client_id
-   REACT_APP_COGNITO_DOMAIN=your_cognito_domain
-   REACT_APP_REDIRECT_SIGN_IN=http://localhost:3000/
-   REACT_APP_REDIRECT_SIGN_OUT=http://localhost:3000/
    ```
 
 4. [Any additional setup steps]
