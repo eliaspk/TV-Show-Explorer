@@ -85,11 +85,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         username: email,
         password,
       });
+      checkAuthState();
     } catch (error) {
       setError(new Error("Error authenticating"));
     }
     setIsLoading(false);
-    checkAuthState();
   };
 
   const signUp = async (email: string, password: string): Promise<void> => {
