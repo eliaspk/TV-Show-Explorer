@@ -4,6 +4,8 @@
 
 This is the frontend for the TV Show Explorer application, a web-based platform that allows users to discover, search, and manage their favorite TV shows. Built with React and TypeScript, it provides a responsive and intuitive interface for browsing show details and adding favorites. No pagination as of yet.
 
+Deployed website: http://tv-explorer.s3-website-us-east-1.amazonaws.com/
+
 Backend code can be found here: https://github.com/eliaspk/TV-Show-Explorer-Backend
 
 ## Features
