@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, { createContext, useState, ReactNode } from "react";
 import { Show } from "../types";
 
 interface SearchContextType {
@@ -8,7 +8,9 @@ interface SearchContextType {
   setSearchResults: (results: Show[]) => void;
 }
 
-const SearchContext = createContext<SearchContextType | undefined>(undefined);
+export const SearchContext = createContext<SearchContextType | undefined>(
+  undefined
+);
 
 export const SearchProvider: React.FC<{ children: ReactNode }> = ({
   children,
@@ -23,12 +25,4 @@ export const SearchProvider: React.FC<{ children: ReactNode }> = ({
       {children}
     </SearchContext.Provider>
   );
-};
-
-export const useSearch = () => {
-  const context = useContext(SearchContext);
-  if (context === undefined) {
-    throw new Error("useSearch must be used within a SearchProvider");
-  }
-  return context;
 };
