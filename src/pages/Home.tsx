@@ -25,7 +25,7 @@ const Home: React.FC = () => {
     isLoading: isSearchLoading,
     error: searchError,
   } = useQuery({
-    queryKey: ["searchShows", debouncedSearchTerm],
+    queryKey: ["searchShows", debouncedSearchTerm, user?.idToken],
     queryFn: () => searchShows(debouncedSearchTerm, user?.idToken),
     enabled: debouncedSearchTerm.length > 0,
     staleTime: 1000 * 60 * 15,
@@ -36,7 +36,7 @@ const Home: React.FC = () => {
     isLoading: isTrendingLoading,
     error: trendingError,
   } = useQuery({
-    queryKey: ["trendingShows"],
+    queryKey: ["trendingShows", user?.idToken],
     queryFn: () => fetchTrendingShows(user?.idToken),
     enabled: debouncedSearchTerm.length === 0,
     staleTime: 1000 * 60 * 15,
