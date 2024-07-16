@@ -17,7 +17,7 @@ const Favorites: React.FC = () => {
   const toggleFavorite = useToggleFavorite();
 
   const handleToggleFavorite = (show: Show) => {
-    toggleFavorite.mutate({ show });
+    toggleFavorite.mutate({ show, idToken: user?.idToken });
   };
 
   if (isLoading || favoritesIsLoading) {
