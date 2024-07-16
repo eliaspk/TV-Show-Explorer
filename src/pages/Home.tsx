@@ -4,13 +4,13 @@ import { useDebounce } from "use-debounce";
 import { Search } from "lucide-react";
 import TVShowCard from "../components/TVShowCard";
 import { searchShows, fetchTrendingShows } from "../api/shows";
-import { useSearch } from "../context/SearchContext";
 import LoadingIndicator from "../components/common/LoadingIndicator";
 import ErrorMessage from "../components/common/ErrorMessage";
 import { useFavorite } from "../hooks/useFavorite";
 import { Show } from "../types";
 import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { useSearch } from "../hooks/useSearch";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
