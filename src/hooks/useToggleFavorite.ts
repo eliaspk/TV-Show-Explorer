@@ -7,7 +7,7 @@ type ToggleFavoriteParams = {
   idToken?: string;
 };
 
-export const useFavorite = () => {
+export const useToggleFavorite = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -57,7 +57,7 @@ export const useFavorite = () => {
 
       return { previousFavorites, previousSearchShows, previousTrendingShows };
     },
-    onError: (err, newTodo, context) => {
+    onError: (err, vars, context) => {
       queryClient.setQueryData(["favorites"], context?.previousFavorites);
       queryClient.setQueryData(["searchShows"], context?.previousSearchShows);
       queryClient.setQueryData(

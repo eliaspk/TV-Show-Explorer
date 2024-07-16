@@ -6,11 +6,11 @@ import TVShowCard from "../components/TVShowCard";
 import { searchShows, fetchTrendingShows } from "../api/shows";
 import LoadingIndicator from "../components/common/LoadingIndicator";
 import ErrorMessage from "../components/common/ErrorMessage";
-import { useFavorite } from "../hooks/useFavorite";
 import { Show } from "../types";
 import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "../hooks/useSearch";
+import { useToggleFavorite } from "../hooks/useToggleFavorite";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const Home: React.FC = () => {
     useSearch();
   const { user } = useAuth();
   const [debouncedSearchTerm] = useDebounce(searchTerm, 300);
-  const favoriteMutation = useFavorite();
+  const toggleFavorite = useToggleFavorite();
 
   const {
     data: searchData,
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
       navigate("/favorites");
       return;
     }
-    favoriteMutation.mutate({ show, idToken: user?.idToken });
+    toggleFavorite.mutate({ show, idToken: user?.idToken });
   };
 
   const isLoading = isSearchLoading || isTrendingLoading;

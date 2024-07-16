@@ -1,11 +1,11 @@
 import React from "react";
 import { useAuth } from "../hooks/useAuth";
 import LoadingIndicator from "../components/common/LoadingIndicator";
-import { useFavorites } from "../hooks/useFavorites";
 import ErrorMessage from "../components/common/ErrorMessage";
 import TVShowCard from "../components/TVShowCard";
 import { Show } from "../types";
-import { useFavorite } from "../hooks/useFavorite";
+import { useFetchFavorites } from "../hooks/useFetchFavorites";
+import { useToggleFavorite } from "../hooks/useToggleFavorite";
 
 const Favorites: React.FC = () => {
   const { user, isLoading } = useAuth();
@@ -13,11 +13,11 @@ const Favorites: React.FC = () => {
     data: favoritesData,
     isLoading: favoritesIsLoading,
     error: favoritesError,
-  } = useFavorites();
-  const favoriteMutation = useFavorite();
+  } = useFetchFavorites();
+  const toggleFavorite = useToggleFavorite();
 
   const handleToggleFavorite = (show: Show) => {
-    favoriteMutation.mutate({ show });
+    toggleFavorite.mutate({ show });
   };
 
   if (isLoading || favoritesIsLoading) {
