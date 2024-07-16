@@ -2,13 +2,14 @@ import React from "react";
 import { Menu, MenuButton, MenuItem, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { useAuth } from "../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const pf =
   "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541";
 
 const UserAvatar: React.FC = () => {
   const { user, signOut } = useAuth();
+  const navigate = useNavigate();
 
   if (user?.id) {
     return (
@@ -32,19 +33,19 @@ const UserAvatar: React.FC = () => {
         >
           <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="py-1">
-              <MenuItem>
+              <MenuItem as="div">
                 {({ focus }) => (
-                  <Link
-                    to="/favorites"
+                  <button
+                    onClick={() => navigate("/favorites")}
                     className={`${
                       focus ? "bg-gray-100 text-gray-900" : "text-gray-700"
-                    } block px-4 py-2 text-sm`}
+                    } block w-full text-left px-4 py-2 text-sm`}
                   >
                     Favorites
-                  </Link>
+                  </button>
                 )}
               </MenuItem>
-              <MenuItem>
+              <MenuItem as="div">
                 {({ focus }) => (
                   <button
                     onClick={signOut}
@@ -63,7 +64,7 @@ const UserAvatar: React.FC = () => {
     );
   }
 
-  return <></>;
+  return null;
 };
 
 export default UserAvatar;
