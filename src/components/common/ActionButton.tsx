@@ -14,7 +14,6 @@ interface ActionButtonProps {
 
 const ActionButton: React.FC<ActionButtonProps> = ({
   text,
-  loadingText = "Loading...",
   isLoading,
   type = "button",
   variant = "primary",
