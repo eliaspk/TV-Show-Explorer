@@ -3,16 +3,12 @@ import { useAuth } from "../../hooks/useAuth";
 import ActionButton from "../../components/common/ActionButton";
 import { useNavigate } from "react-router-dom";
 
-interface LoginProps {
-  // Define any props here if needed
-}
-
 interface FormErrors {
   username?: string;
   password?: string;
 }
 
-const Login: React.FC<LoginProps> = () => {
+const Login: React.FC = () => {
   const { signIn, isLoading, user, error: authError } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
