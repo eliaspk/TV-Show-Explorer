@@ -22,7 +22,6 @@ const Login: React.FC<LoginProps> = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Simple validation
     let errors: FormErrors = {};
     if (!email) {
       errors.username = "Email is required";
@@ -35,7 +34,6 @@ const Login: React.FC<LoginProps> = () => {
       errors.password = "Password must be 8 characters long";
     }
 
-    // If there are errors, set them and prevent form submission
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
       return;
