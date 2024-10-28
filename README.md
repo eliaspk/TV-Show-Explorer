@@ -35,20 +35,14 @@ Backend code can be found here: https://github.com/eliaspk/TV-Show-Explorer-Back
 1. Clone the repository:
 
    ```
-   git clone [Your repository URL]
-   cd [Your project directory]
+   git clone https://github.com/eliaspk/TV-Show-Explorer.git
+   cd TV-Show-Explorer
    ```
 
 2. Install dependencies:
 
    ```
    npm install
-   ```
-
-   or if you're using yarn:
-
-   ```
-   yarn install
    ```
 
 3. Set up environment variables:
@@ -60,20 +54,12 @@ Backend code can be found here: https://github.com/eliaspk/TV-Show-Explorer-Back
    REACT_APP_COGNITO_CLIENT_ID=your_cognito_client_id
    ```
 
-4. [Any additional setup steps]
-
 ## Running the Application
 
 To start the development server:
 
 ```
 npm start
-```
-
-or if you're using yarn:
-
-```
-yarn start
 ```
 
 The application will be available at `http://localhost:3000`.
